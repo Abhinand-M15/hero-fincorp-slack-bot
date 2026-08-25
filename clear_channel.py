@@ -21,6 +21,8 @@ ALL_CHANNELS = [
     "credit-deviation-approvals",
     "lead-swarming",
     "field-collections-intake",
+    "lending-overview",
+    "collections-dashboard",
 ]
 
 

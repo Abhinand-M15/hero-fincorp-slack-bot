@@ -9,6 +9,7 @@ from slack_bolt.adapter.socket_mode import SocketModeHandler
 
 from app_config import SLACK_BOT_TOKEN, SLACK_APP_TOKEN
 from audit_log import log_action
+from kb_answers import find_answer
 from queues import BUCKET_QUEUES, BUCKET_LABELS, DEVIATION_QUEUE, LEAD_QUEUE, PENDING_APPROVALS
 from queue_state import get_queue_message, remember_queue_message
 from slack_blocks import (
@@ -57,6 +58,34 @@ def _actor_name(client, user_id):
     except Exception:
         pass
     return user_id
+
+
+# ---------- Knowledge base Q&A ----------
+
+@app.event("message")
+def handle_kb_question(event, client):
+    if event.get("bot_id") or event.get("subtype"):
+        return
+
+    channel_id = event["channel"]
+    name = _channel_name(client, channel_id)
+    if name != "branch-support-escalations":
+        return
+
+    text = event.get("text") or ""
+    ts = event["ts"]
+    user = _actor_name(client, event.get("user", ""))
+    answer = find_answer(text)
+
+    if answer:
+        client.chat_postMessage(channel=channel_id, thread_ts=ts, text=f"📘 {answer}")
+        log_action("KB_QUESTION_ANSWERED", "-", user, text)
+    else:
+        client.chat_postMessage(
+            channel=channel_id, thread_ts=ts,
+            text="Couldn't find a confident answer in the knowledge base — flagging this for manual follow-up from the branch support team.",
+        )
+        log_action("KB_QUESTION_UNANSWERED", "-", user, text)
 
 
 # ---------- Open modals ----------

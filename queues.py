@@ -32,6 +32,14 @@ BUCKET_QUEUES = {
     "collections-npa": [
         {"loan_id": "HFCL/LAP/2026/00077", "borrower": "Anil Traders (Prop.)", "dpd": 96,
          "assigned_officer": "Field Officer — Ahmedabad Cluster"},
+        {"loan_id": "HFCL/PL/2026/00699", "borrower": "Suresh Mehta", "dpd": 103,
+         "assigned_officer": "Field Officer — Ahmedabad Cluster"},
+        {"loan_id": "HFCL/BL/2026/00456", "borrower": "Kavya Enterprises", "dpd": 112,
+         "assigned_officer": "Field Officer — Ahmedabad Cluster"},
+        {"loan_id": "HFCL/TW/2026/01033", "borrower": "Ramavath Naik", "dpd": 98,
+         "assigned_officer": "Field Officer — Ahmedabad Cluster"},
+        {"loan_id": "HFCL/UC/2026/00721", "borrower": "Preeti Malhotra", "dpd": 121,
+         "assigned_officer": "Field Officer — Ahmedabad Cluster"},
     ],
 }
 
