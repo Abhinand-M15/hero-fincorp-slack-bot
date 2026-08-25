@@ -4,7 +4,7 @@ so they actually show up in the sidebar.
 """
 from slack_client import find_channel_id, invite_to_channel
 
-HUMAN_USER_IDS = ["U095ER557AQ", "U0BD8Q8MKJQ"]
+HUMAN_USER_IDS = ["U095ER557AQ", "U0BD8Q8MKJQ", "U09S0DD7M16"]
 
 CHANNEL_NAMES = [
     "branch-support-escalations",
@@ -13,7 +13,7 @@ CHANNEL_NAMES = [
     "collections-npa",
     "legal-escalations",
     "credit-deviation-approvals",
-    "lead-warming",
+    "lead-swarming",
     "field-collections-intake",
 ]
 

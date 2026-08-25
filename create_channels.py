@@ -17,8 +17,8 @@ CHANNELS = [
     # Use case 3: Credit deviation approval
     ("credit-deviation-approvals", False),
 
-    # Use case 4: Case warming
-    ("lead-warming", False),
+    # Use case 4: Lead swarming
+    ("lead-swarming", False),
     ("field-collections-intake", False),
 ]
 

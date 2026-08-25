@@ -348,7 +348,7 @@ def handle_handoff(ack, body, client):
     if intake_id:
         client.chat_postMessage(
             channel=intake_id, text=f"Lead handed off — {lead_id}",
-            blocks=[{"type": "section", "text": {"type": "mrkdwn", "text": f"*Lead `{lead_id}` handed off* by {user} from case warming."}}],
+            blocks=[{"type": "section", "text": {"type": "mrkdwn", "text": f"*Lead `{lead_id}` handed off* by {user} from lead swarming."}}],
         )
 
 

@@ -185,7 +185,7 @@ def lead_card(lead_id, contact_name, source, product_interest, outcome, note, do
                 {"type": "button", "text": {"type": "plain_text", "text": "Handoff to Field/RM"}, "style": "primary", "value": lead_id, "action_id": "handoff_lead"}
             ],
         })
-    blocks.append({"type": "context", "elements": [{"type": "mrkdwn", "text": "Case Warming — inside sales lead tracking"}]})
+    blocks.append({"type": "context", "elements": [{"type": "mrkdwn", "text": "Lead Swarming — inside sales lead tracking"}]})
     return text, blocks
 
 

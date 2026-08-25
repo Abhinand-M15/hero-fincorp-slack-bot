@@ -19,7 +19,7 @@ ALL_CHANNELS = [
     "collections-npa",
     "legal-escalations",
     "credit-deviation-approvals",
-    "lead-warming",
+    "lead-swarming",
     "field-collections-intake",
 ]
 

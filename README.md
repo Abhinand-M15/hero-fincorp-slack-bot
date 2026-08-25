@@ -5,7 +5,7 @@ A working Slack bot (Socket Mode, `slack-bolt`) demonstrating 4 operational work
 1. **Knowledge Base Bot** — policy Q&A backed by a Slack Canvas
 2. **Field Collections** — DPD-bucket-based visit logging, with automatic legal escalation logic
 3. **Credit Deviation Approval** — a pending-approvals queue with a two-step review modal
-4. **Case Warming** — inside-sales lead tracking with a self-shrinking queue and handoff to Field/RM
+4. **Lead Swarming** — inside-sales lead tracking with a self-shrinking queue and handoff to Field/RM
 
 Plus a proven Salesforce JWT Bearer Flow connection (`sf_auth.py`) — no password ever used.
 

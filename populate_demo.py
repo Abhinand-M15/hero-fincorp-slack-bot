@@ -19,9 +19,9 @@ if __name__ == "__main__":
     post_message(ch, text=text, blocks=blocks)
     print("Posted deviation queue to #credit-deviation-approvals")
 
-    ch = find_channel_id("lead-warming")
+    ch = find_channel_id("lead-swarming")
     text, blocks = lead_queue_card(LEAD_QUEUE)
     result = post_message(ch, text=text, blocks=blocks)
     if result.get("ok"):
         remember_queue_message("lead_queue", ch, result["ts"])
-    print("Posted lead queue to #lead-warming")
+    print("Posted lead queue to #lead-swarming")
