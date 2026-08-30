@@ -23,7 +23,7 @@ def bucket_queue_card(bucket_label, queue):
         {"type": "actions", "elements": [
             {"type": "button", "text": {"type": "plain_text", "text": "Log Field Visit"}, "action_id": "open_visit_modal"}
         ]},
-        {"type": "context", "elements": [{"type": "mrkdwn", "text": "Field officers: after visiting an account above, click Log Field Visit and select it from the list."}]},
+        {"type": "context", "elements": [{"type": "mrkdwn", "text": "Partner agents (external and extended workforce): after visiting an account above, click Log Field Visit and select it from the list."}]},
     ]
     return text, blocks
 

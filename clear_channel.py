@@ -10,17 +10,10 @@ Usage:
 import sys
 import time
 
+import channels
 from slack_client import api_call, find_channel_id
 
-ALL_CHANNELS = [
-    "branch-support-escalations",
-    "collections-bucket2",
-    "collections-bucket3",
-    "collections-npa",
-    "legal-escalations",
-    "credit-deviation-approvals",
-    "lead-swarming",
-    "field-collections-intake",
+ALL_CHANNELS = [c["name"] for c in channels.ALL_CHANNELS] + [
     "lending-overview",
     "collections-dashboard",
 ]

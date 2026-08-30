@@ -4,5 +4,7 @@ __pycache__/
 .env
 server.key
 queue_state.json
+journey_state.json
 audit_log.jsonl
 app.log
+demo_files/

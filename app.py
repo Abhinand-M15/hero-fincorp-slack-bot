@@ -1,13 +1,26 @@
 """
 Hero FinCorp Bot — real Socket Mode app. Every action (button click, modal
 submit) actually updates Slack and logs to the audit trail.
+
+Two layers of workflows live here:
+
+  * the original four use cases — knowledge base, bucket collections, credit
+    deviation, lead swarming — handled in this file;
+  * the connected journeys built for the customer walkthrough — the external
+    partner agent's collections day with automated nudges, CPA approvals with
+    one- and multi-level routing, and the security/data-ownership consoles —
+    registered from handlers_collections.py, handlers_cpa.py and
+    handlers_security.py.
 """
 import logging
 
 from slack_bolt import App
 from slack_bolt.adapter.socket_mode import SocketModeHandler
 
-from app_config import SLACK_BOT_TOKEN, SLACK_APP_TOKEN
+import handlers_collections
+import handlers_cpa
+import handlers_security
+from app_config import SLACK_BOT_TOKEN, SLACK_APP_TOKEN, require_tokens
 from audit_log import log_action
 from kb_answers import find_answer
 from queues import BUCKET_QUEUES, BUCKET_LABELS, DEVIATION_QUEUE, LEAD_QUEUE, PENDING_APPROVALS
@@ -21,6 +34,12 @@ from slack_blocks import (
 logging.basicConfig(level=logging.WARNING)
 
 app = App(token=SLACK_BOT_TOKEN)
+
+# The connected journeys register their own handlers so this file stays about
+# the original four use cases.
+handlers_collections.register(app)
+handlers_cpa.register(app)
+handlers_security.register(app)
 
 _channel_name_cache = {}
 _channel_id_cache = {}
@@ -177,7 +196,7 @@ def handle_visit_submit(ack, body, client, view):
     client.chat_postMessage(channel=channel_id, text=text, blocks=blocks)
     log_action("VISIT_LOGGED", loan_id, user, f"{outcome_label} — {detail}")
 
-    # A Refused outcome, in any bucket, is not something the field officer or
+    # A Refused outcome, in any bucket, is not something the partner agent or
     # this workflow decides alone — it goes to the manager, who reads the
     # reason and decides whether to proceed with legal action or hold for
     # more information. Only NPA accounts (90+ DPD) are actually legally
@@ -382,6 +401,9 @@ def handle_handoff(ack, body, client):
 
 
 if __name__ == "__main__":
+    require_tokens()
     print("Hero FinCorp Bot starting (Socket Mode)...")
+    print("  workflows: knowledge base · bucket collections · credit deviation · lead swarming")
+    print("  journeys:  partner-agent collections + nudges · CPA approvals · security console")
     handler = SocketModeHandler(app, SLACK_APP_TOKEN)
     handler.start()
