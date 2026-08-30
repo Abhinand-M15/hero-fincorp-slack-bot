@@ -44,9 +44,15 @@ def run_script(name, *args, check=True):
 
 
 def already_set_up():
-    """Have the opening cards been posted into this workspace already?"""
+    """Have the opening cards been posted, according to this machine's state?"""
     import journey_state
     return bool(journey_state.get_card("activity_board"))
+
+
+def workspace_already_provisioned():
+    """Do the journey channels already exist in the workspace itself?"""
+    from slack_client import find_channel_id
+    return bool(find_channel_id("collections-control-room"))
 
 
 def cmd_test():
@@ -117,6 +123,16 @@ def cmd_up(fresh=False):
         banner("Workspace setup")
         print(f"  {GREEN}✓{RESET} already set up — the opening cards are posted.")
         print(f"    {DIM}To start over from a clean workspace: python demo.py --fresh{RESET}", flush=True)
+    elif workspace_already_provisioned():
+        # The channels exist but this machine has no record of posting the
+        # cards — a fresh checkout, a different laptop, or a wiped state file.
+        # Plain setup here would post a second set of everything, so reset
+        # instead: it clears what is there and posts one clean set.
+        banner("Workspace setup")
+        print(f"  {GREEN}✓{RESET} this workspace is already set up, but this machine has no record of it.")
+        print(f"    {DIM}Resetting so you get one clean set of cards instead of a duplicate set.{RESET}",
+              flush=True)
+        cmd_reset()
     else:
         cmd_setup()
 

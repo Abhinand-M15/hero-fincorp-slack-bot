@@ -72,10 +72,18 @@ not. Nothing it does touches the workspace.
 The bot token needs:
 
 ```
-chat:write          channels:read       groups:read         groups:write
-channels:manage     users:read          files:read          files:write
-canvases:write      im:write
+chat:write          channels:read       channels:history    channels:manage
+groups:read         groups:write        groups:history      users:read
+files:write         canvases:write
 ```
+
+`groups:history` is easy to miss and matters twice: it carries the `message.groups`
+event behind the "chat is not the record" redirect in the agent channels, and
+without it `./run.sh reset` cannot read private-channel history to clear old
+messages.
+
+Optional: `files:read` (details of a file an agent uploads), `im:write` (direct
+messages instead of channel posts).
 
 Event subscriptions: `message.channels`, `message.groups`. Socket Mode on, with an app-level token carrying `connections:write`.
 

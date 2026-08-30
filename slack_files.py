@@ -18,6 +18,23 @@ from slack_client import api_call
 BASE = "https://slack.com/api"
 
 
+def _form_call(method, params):
+    """
+    files.getUploadURLExternal rejects a JSON body — it only reads
+    form-encoded parameters, unlike almost every other Web API method. Hence
+    this rather than the shared JSON helper in slack_client.py.
+    """
+    response = requests.post(
+        f"{BASE}/{method}",
+        headers={"Authorization": f"Bearer {SLACK_BOT_TOKEN}"},
+        data=params,
+    )
+    result = response.json()
+    if not result.get("ok"):
+        print(f"SLACK API ERROR [{method}]: {result.get('error')} | {result}")
+    return result
+
+
 def upload_to_channel(path, channel_id, title=None, initial_comment=None, thread_ts=None):
     """
     Upload one local file into one channel. Returns the Slack file object, or
@@ -30,7 +47,7 @@ def upload_to_channel(path, channel_id, title=None, initial_comment=None, thread
     filename = os.path.basename(path)
     length = os.path.getsize(path)
 
-    ticket = api_call("files.getUploadURLExternal", {"filename": filename, "length": length})
+    ticket = _form_call("files.getUploadURLExternal", {"filename": filename, "length": length})
     if not ticket.get("ok"):
         return None
 

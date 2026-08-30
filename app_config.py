@@ -17,6 +17,20 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+# macOS python.org builds ship without a CA bundle wired into OpenSSL, so
+# slack_sdk (which talks over urllib) fails certificate verification while
+# requests, which carries its own bundle, works fine. Point OpenSSL at the
+# same bundle rather than making anyone run Install Certificates.command.
+# Harmless everywhere else, and never overrides a bundle already chosen.
+if not os.environ.get("SSL_CERT_FILE"):
+    try:
+        import certifi
+
+        os.environ["SSL_CERT_FILE"] = certifi.where()
+        os.environ.setdefault("REQUESTS_CA_BUNDLE", certifi.where())
+    except ImportError:
+        pass
+
 SLACK_BOT_TOKEN = os.environ.get("SLACK_BOT_TOKEN", "")
 SLACK_APP_TOKEN = os.environ.get("SLACK_APP_TOKEN", "")
 

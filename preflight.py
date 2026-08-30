@@ -26,6 +26,9 @@ REQUIRED_SCOPES = {
     "users:read": "resolve who clicked a button",
     "files:write": "attach the supporting documents to an approval",
     "canvases:write": "create the security and architecture canvases",
+    "channels:history": "receive the message.channels event the knowledge base bot answers",
+    "groups:history": "receive message.groups in the private agent channels, and read history so "
+                      "reset can clear old messages",
 }
 OPTIONAL_SCOPES = {
     "files:read": "read details of a file an agent uploads",
