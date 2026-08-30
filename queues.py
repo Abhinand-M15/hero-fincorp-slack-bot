@@ -1,45 +1,45 @@
 """
 The 'assigned work' each role sees before they do anything — this is what
-answers "how does the field officer know where to go / what to log."
+answers "how does the assigned partner agent know where to go / what to log."
 Static demo data, matching data/loan-account-schema.md.
 """
 
 BUCKET_QUEUES = {
     "collections-bucket2": [
         {"loan_id": "HFCL/TW/2026/00891", "borrower": "Ramesh Kumar", "dpd": 42,
-         "assigned_officer": "Field Officer — Pune Cluster"},
+         "assigned_officer": "Partner Agent — Pune Cluster"},
         {"loan_id": "HFCL/TW/2026/00902", "borrower": "Kiran Patil", "dpd": 38,
-         "assigned_officer": "Field Officer — Pune Cluster"},
+         "assigned_officer": "Partner Agent — Pune Cluster"},
         {"loan_id": "HFCL/PL/2026/01301", "borrower": "Ashwini More", "dpd": 45,
-         "assigned_officer": "Field Officer — Pune Cluster"},
+         "assigned_officer": "Partner Agent — Pune Cluster"},
         {"loan_id": "HFCL/UC/2026/00611", "borrower": "Ganesh Pawar", "dpd": 33,
-         "assigned_officer": "Field Officer — Pune Cluster"},
+         "assigned_officer": "Partner Agent — Pune Cluster"},
         {"loan_id": "HFCL/CD/2026/00220", "borrower": "Snehal Joshi", "dpd": 50,
-         "assigned_officer": "Field Officer — Pune Cluster"},
+         "assigned_officer": "Partner Agent — Pune Cluster"},
     ],
     "collections-bucket3": [
         {"loan_id": "HFCL/PL/2026/01204", "borrower": "Sunita Devi", "dpd": 68,
-         "assigned_officer": "Field Officer — Lucknow Cluster"},
+         "assigned_officer": "Partner Agent — Lucknow Cluster"},
         {"loan_id": "HFCL/TW/2026/00877", "borrower": "Rajesh Yadav", "dpd": 74,
-         "assigned_officer": "Field Officer — Lucknow Cluster"},
+         "assigned_officer": "Partner Agent — Lucknow Cluster"},
         {"loan_id": "HFCL/BL/2026/00344", "borrower": "Verma Traders", "dpd": 81,
-         "assigned_officer": "Field Officer — Lucknow Cluster"},
+         "assigned_officer": "Partner Agent — Lucknow Cluster"},
         {"loan_id": "HFCL/UC/2026/00588", "borrower": "Anita Singh", "dpd": 65,
-         "assigned_officer": "Field Officer — Lucknow Cluster"},
+         "assigned_officer": "Partner Agent — Lucknow Cluster"},
         {"loan_id": "HFCL/PL/2026/01277", "borrower": "Mohd. Irfan", "dpd": 89,
-         "assigned_officer": "Field Officer — Lucknow Cluster"},
+         "assigned_officer": "Partner Agent — Lucknow Cluster"},
     ],
     "collections-npa": [
         {"loan_id": "HFCL/LAP/2026/00077", "borrower": "Anil Traders (Prop.)", "dpd": 96,
-         "assigned_officer": "Field Officer — Ahmedabad Cluster"},
+         "assigned_officer": "Partner Agent — Ahmedabad Cluster"},
         {"loan_id": "HFCL/PL/2026/00699", "borrower": "Suresh Mehta", "dpd": 103,
-         "assigned_officer": "Field Officer — Ahmedabad Cluster"},
+         "assigned_officer": "Partner Agent — Ahmedabad Cluster"},
         {"loan_id": "HFCL/BL/2026/00456", "borrower": "Kavya Enterprises", "dpd": 112,
-         "assigned_officer": "Field Officer — Ahmedabad Cluster"},
+         "assigned_officer": "Partner Agent — Ahmedabad Cluster"},
         {"loan_id": "HFCL/TW/2026/01033", "borrower": "Ramavath Naik", "dpd": 98,
-         "assigned_officer": "Field Officer — Ahmedabad Cluster"},
+         "assigned_officer": "Partner Agent — Ahmedabad Cluster"},
         {"loan_id": "HFCL/UC/2026/00721", "borrower": "Preeti Malhotra", "dpd": 121,
-         "assigned_officer": "Field Officer — Ahmedabad Cluster"},
+         "assigned_officer": "Partner Agent — Ahmedabad Cluster"},
     ],
 }
 

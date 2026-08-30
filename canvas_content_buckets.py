@@ -7,7 +7,7 @@ BUCKET2_CANVAS_MARKDOWN = """# 🟡 Bucket 2 Dashboard (31–60 DPD)
 | Accounts pending | 5 |
 | Total pending amount | ₹45,800 |
 | Average DPD | 42 days |
-| Assigned officer | Field Officer — Pune Cluster |
+| Assigned partner agent | Partner Agent — Pune Cluster |
 | Stage | Field visits begin — phone alone has stopped working |
 
 ## Accounts
@@ -34,7 +34,7 @@ BUCKET3_CANVAS_MARKDOWN = """# 🟠 Bucket 3 Dashboard (61–90 DPD)
 | Accounts pending | 5 |
 | Total pending amount | ₹2,28,800 |
 | Average DPD | 75 days |
-| Assigned officer | Field Officer — Lucknow Cluster |
+| Assigned partner agent | Partner Agent — Lucknow Cluster |
 | Stage | Intensified visits — approaching legal-eligibility |
 
 ## Accounts
@@ -61,7 +61,7 @@ NPA_CANVAS_MARKDOWN = """# 🔴 NPA Dashboard (90+ DPD — Legal-Eligible)
 | Accounts pending | 5 |
 | Total pending amount | ₹4,02,200 |
 | Average DPD | 106 days |
-| Assigned officer | Field Officer — Ahmedabad Cluster |
+| Assigned partner agent | Partner Agent — Ahmedabad Cluster |
 | Legal eligibility | SARFAESI-eligible where secured & ≥₹20L (NBFC assets ≥₹100Cr — Hero FinCorp qualifies) |
 
 ## Accounts
